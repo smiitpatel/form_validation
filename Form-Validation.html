@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+    <style>
+        body{
+            background: rgb(7, 58, 42);
+        }
+        .container{
+            display: flex;
+            justify-content: center;  
+        }
+
+        form{
+            display: grid;
+            width: 250px;
+            border: 2px solid black;
+            padding: 12px;
+            border-radius: 12px;
+            background-color: aquamarine;
+            align-items: center;
+            box-shadow: 4px 9px 15px rgb(52, 186, 204);
+        }
+        .heading{
+            text-align: center;
+            text-decoration-line: underline;
+            padding-bottom: 0px;
+        }
+
+        input {
+            margin: 5px;
+            border-color:aqua;
+            border-radius: 5px;
+        }
+        input[type="button"]{
+            color: red;
+            background-color: rgb(22, 54, 43);
+            border-radius: 25px;
+            width: 35%;
+            margin: 5% 30%;
+            padding: 2%;
+        }
+
+    </style>
+<body>
+    <div class="container">
+
+        <form action="">
+            <div class="heading">
+                <h1>Register Form</h1>
+            </div>
+            First Name : <input type="text" id="fname">
+    
+            Mobile No : <input type="number" id="num">
+    
+            PassWord : <input type="password" id="pwd1">
+    
+            Confirm PassWord : <input type="password" id="pwd2">
+            
+<!-- Color : <input type="color" id="clr"> -->
+ 
+            <input type="button" id="sbmt" value="Click">
+        </form>
+
+    </div>
+</body>
+
+<script>
+    
+    document.querySelector("#sbmt").addEventListener("click", ()=>{
+
+
+// var colorr = document.getElementById("clr").value;
+// document.querySelector("form").style.background = colorr;
+
+        var name = document.getElementById("fname").value;
+        var num= document.getElementById("num").value;
+        var pwd1 = document.getElementById("pwd1").value;
+        var pwd2 = document.getElementById("pwd2").value;
+        var extra = document.getElementsByClassName("container");
+
+        if(name==""|| num==""|| pwd1==""|| pwd2==""){
+            alert("Alll Field are mandetory");
+        }
+        else if(num.length>10 || num.length<10){
+            alert("Number should be 10 digit");
+        }
+        else if(pwd1!=pwd2){
+            alert("Passwrod is not match || please match the password");
+        }
+
+        else{
+            document.write("Your Form is Submmited");
+        }
+    })
+
+    
+</script>
+
+</html>
