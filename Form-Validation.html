@@ -12,14 +12,15 @@
         }
         .container{
             display: flex;
-            justify-content: center;  
+            justify-content: center; 
+            /* float: right; */
         }
 
         form{
             display: grid;
-            width: 250px;
+            width: 300px;
             border: 2px solid black;
-            padding: 12px;
+            padding: 2%;
             border-radius: 12px;
             background-color: aquamarine;
             align-items: center;
@@ -29,12 +30,24 @@
             text-align: center;
             text-decoration-line: underline;
             padding-bottom: 0px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        label{
+            font-family: Verdana;
+            font-size: 120%;
+            padding-bottom: 3px;
         }
 
         input {
             margin: 5px;
             border-color:aqua;
             border-radius: 5px;
+            font-size: large;
+            padding: 3px;
+            margin-bottom: 5%;
+            padding-left: 6%;
+            font-family: cursive;
         }
         input[type="button"]{
             color: red;
@@ -45,6 +58,15 @@
             padding: 2%;
         }
 
+        input[type="button"]:active
+        {
+            background-color: transparent;
+            border-color: rgb(22, 54, 43);
+            color: rgb(22, 54, 43);
+            font-weight: bold
+        }
+        
+
     </style>
 <body>
     <div class="container">
@@ -53,13 +75,13 @@
             <div class="heading">
                 <h1>Register Form</h1>
             </div>
-            First Name : <input type="text" id="fname">
+            <label for="fname">First Name : </label><input type="text" id="fname">
     
-            Mobile No : <input type="number" id="num">
+            <label for="num">Mobile No : </label><input type="number" id="num">
     
-            PassWord : <input type="password" id="pwd1">
+            <label for="pwd1">PassWord : </label><input type="password" id="pwd1">
     
-            Confirm PassWord : <input type="password" id="pwd2">
+            <label for="pwd2">Confirm PassWord : </label><input type="password" id="pwd2">
             
 <!-- Color : <input type="color" id="clr"> -->
  
