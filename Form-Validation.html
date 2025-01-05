@@ -1,126 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
-</head>
+    <title>Form Validation with Animated Gradient</title>
     <style>
-        body{
-            background: rgb(7, 58, 42);
-        }
-        .container{
-            display: flex;
-            justify-content: center; 
-            /* float: right; */
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        form{
-            display: grid;
-            width: 300px;
-            border: 2px solid black;
-            padding: 2%;
-            border-radius: 12px;
-            background-color: aquamarine;
-            align-items: center;
-            box-shadow: 4px 9px 15px rgb(52, 186, 204);
+        html, body {
+            height: 100%;
+            width: 100%;
         }
-        .heading{
+
+        /* Gradient Background Canvas */
+        #gradient-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #a960ee, #ff333d, #90e0ff, #ffcb57);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            z-index: -1; /* Make sure the background is behind everything else */
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #a960ee, #ff333d, #90e0ff, #ffcb57);
+            }
+            25% {
+                background: linear-gradient(45deg, #ff6347, #ffb347, #00c6ff, #0072ff);
+            }
+            50% {
+                background: linear-gradient(45deg, #6a11cb, #2575fc, #00c6ff, #0072ff);
+            }
+            75% {
+                background: linear-gradient(45deg, #ff7e5f, #feb47b, #90e0ff, #ffcb57);
+            }
+            100% {
+                background: linear-gradient(45deg, #a960ee, #ff333d, #90e0ff, #ffcb57);
+            }
+        }
+
+        /* Title Styling */
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(255 255 255 / 26%);
+            border-radius: 10px;
+            border: 1px solid rgb(255 255 255 / 15%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 30px;
+            font-family: sans-serif;
+            padding: 30px 40px;
             text-align: center;
-            text-decoration-line: underline;
-            padding-bottom: 0px;
-            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.4;
+            z-index: 1; /* Ensure the title is above the background */
         }
 
-        label{
-            font-family: Verdana;
-            font-size: 120%;
-            padding-bottom: 3px;
+        /* Flexbox Layout for Centering */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            width: 100%;   /* Full viewport width */
+            z-index: 1; /* Ensure form appears on top of gradient */
+        }
+
+        form {
+            display: grid;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid #00b4d8;
+            border-radius: 12px;
+            background-color: #e0f7fa;
+            box-shadow: 4px 9px 15px rgba(52, 186, 204, 0.5);
+            z-index: 2; /* Ensure the form appears above the background */
+            box-sizing: border-box; /* Ensure padding does not affect form width */
+        }
+
+        .heading {
+            text-align: center;
+            text-decoration: underline;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24px;
+            color: #004d40;
+        }
+
+        label {
+            font-size: 16px;
+            color: #004d40;
+            margin-bottom: 5px;
         }
 
         input {
-            margin: 5px;
-            border-color:aqua;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #00b4d8;
             border-radius: 5px;
-            font-size: large;
-            padding: 3px;
-            margin-bottom: 5%;
-            padding-left: 6%;
-            font-family: cursive;
+            outline: none;
+            transition: 0.3s;
         }
-        input[type="button"]{
-            color: red;
-            background-color: rgb(22, 54, 43);
+
+        input:focus {
+            border-color: #007c8e;
+        }
+
+        input[type="button"] {
+            background-color: #007c8e;
+            color: #fff;
             border-radius: 25px;
-            width: 35%;
-            margin: 5% 30%;
-            padding: 2%;
+            width: 50%;
+            margin: 0 auto;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
         }
 
-        input[type="button"]:active
-        {
+        input[type="button"]:hover {
+            background-color: #004d40;
+        }
+
+        input[type="button"]:active {
             background-color: transparent;
-            border-color: rgb(22, 54, 43);
-            color: rgb(22, 54, 43);
-            font-weight: bold
+            color: #007c8e;
+            border-color: #007c8e;
         }
-        
 
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            form {
+                width: 90%;  /* Make the form more responsive on smaller screens */
+                max-width: none;
+            }
+
+            .heading {
+                font-size: 20px;  /* Reduce font size for smaller screens */
+            }
+
+            label, input {
+                font-size: 14px;  /* Adjust input and label font size */
+            }
+
+            input[type="button"] {
+                width: 60%;  /* Adjust button width on smaller screens */
+            }
+        }
     </style>
+</head>
 <body>
-    <div class="container">
+    <!-- Gradient Background Canvas -->
+    <div id="gradient-canvas"></div>
 
-        <form action="">
+    <!-- Form Container -->
+    <div class="container">
+        <form id="registrationForm">
             <div class="heading">
                 <h1>Register Form</h1>
             </div>
-            <label for="fname">First Name : </label><input type="text" id="fname">
-    
-            <label for="num">Mobile No : </label><input type="number" id="num">
-    
-            <label for="pwd1">PassWord : </label><input type="password" id="pwd1">
-    
-            <label for="pwd2">Confirm PassWord : </label><input type="password" id="pwd2">
+            <label for="fname">First Name: </label>
+            <input type="text" id="fname" required>
             
-<!-- Color : <input type="color" id="clr"> -->
- 
-            <input type="button" id="sbmt" value="Click">
+            <label for="num">Mobile No: </label>
+            <input type="text" id="num" maxlength="10" required>
+
+            <label for="pwd1">Password: </label>
+            <input type="password" id="pwd1" required>
+
+            <label for="pwd2">Confirm Password: </label>
+            <input type="password" id="pwd2" required>
+
+            <input type="button" id="sbmt" value="Submit">
         </form>
-
     </div>
+
+    <script>
+        document.querySelector("#sbmt").addEventListener("click", function() {
+            var name = document.getElementById("fname").value;
+            var num = document.getElementById("num").valu2e;
+            var pwd1 = document.getElementById("pwd1").value;
+            var pwd2 = document.getElementById("pwd2").value;
+
+            // Basic form validation
+            if (!name || !num || !pwd1 || !pwd2) {
+                alert("All fields are mandatory.");
+            }
+            else if (num.length !== 10) {
+                alert("Mobile number should be 10 digits.");
+            }
+            else if (pwd1 !== pwd2) {
+                alert("Passwords do not match.");
+            }
+            else {
+                alert("Your form has been submitted successfully.");
+                // Optionally, you could submit the form here or reset the form
+                document.getElementById("registrationForm").reset();
+            }
+        });
+    </script>
 </body>
-
-<script>
-    
-    document.querySelector("#sbmt").addEventListener("click", ()=>{
-
-
-// var colorr = document.getElementById("clr").value;
-// document.querySelector("form").style.background = colorr;
-
-        var name = document.getElementById("fname").value;
-        var num= document.getElementById("num").value;
-        var pwd1 = document.getElementById("pwd1").value;
-        var pwd2 = document.getElementById("pwd2").value;
-        var extra = document.getElementsByClassName("container");
-
-        if(name==""|| num==""|| pwd1==""|| pwd2==""){
-            alert("Alll Field are mandetory");
-        }
-        else if(num.length>10 || num.length<10){
-            alert("Number should be 10 digit");
-        }
-        else if(pwd1!=pwd2){
-            alert("Passwrod is not match || please match the password");
-        }
-
-        else{
-            document.write("Your Form is Submmited");
-        }
-    })
-
-    
-</script>
-
 </html>
